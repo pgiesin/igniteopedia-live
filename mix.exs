@@ -44,7 +44,11 @@ defmodule IgniteopediaLive.MixProject do
       {:telemetry_poller, "~> 1.0"},
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
-      {:tailwind, "~> 0.1", runtime: Mix.env() == :dev}
+      {:tailwind, "~> 0.1", runtime: Mix.env() == :dev},
+      {:ecto_sql, "~> 3.7"},
+      {:postgrex, "~> 0.16.2"},
+
+      #{:repo_manager, git: "https://github.com/pgiesin/igniteopedia-core.git", sparse: "repo_manager", branch: "main"},
     ]
   end
 

@@ -24,12 +24,28 @@ if config_env() == :prod do
       environment variable SECRET_KEY_BASE is missing.
       You can generate one by calling: mix phx.gen.secret
       """
+  app_name =
+    System.get_env("FLY_APP_NAME") ||
+      raise "FLY_APP_NAME not available"
 
-  host = System.get_env("PHX_HOST") || "example.com"
+  database_url =
+    System.get_env("DATABASE_URL") ||
+      raise """
+      environment variable DATABASE_URL is missing.
+      For example: ecto://USER:PASS@HOST/DATABASE
+      """
+
+#  config :repo_manager, RepoManager.Runtime.Repo,
+#    # IMPORTANT: Or it won't find the DB server
+#    socket_options: [:inet6],
+#    url: database_url,
+#    pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10")
+
+  #host = System.get_env("PHX_HOST") || "example.com"
   port = String.to_integer(System.get_env("PORT") || "4000")
 
   config :igniteopedia_live, IgniteopediaLiveWeb.Endpoint,
-    url: [host: host, port: 443],
+    url: [host: "#{app_name}.fly.dev", port: 443],
     http: [
       # Enable IPv6 and bind on all interfaces.
       # Set it to  {0, 0, 0, 0, 0, 0, 0, 1} for local network only access.
@@ -45,7 +61,7 @@ if config_env() == :prod do
   # If you are doing OTP releases, you need to instruct Phoenix
   # to start each relevant endpoint:
   #
-  #     config :igniteopedia_live, IgniteopediaLiveWeb.Endpoint, server: true
+  config :igniteopedia_live, IgniteopediaLiveWeb.Endpoint, server: true
   #
   # Then you can assemble a release by calling `mix release`.
   # See `mix help release` for more information.
