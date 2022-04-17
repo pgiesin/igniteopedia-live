@@ -20,6 +20,12 @@ config :igniteopedia_live, IgniteopediaLiveWeb.Endpoint,
     tailwind: {Tailwind, :install_and_run, [:default, ~w(--watch)]},
   ]
 
+config :repo_manager, RepoManager.Runtime.Repo,
+        database: "igniteopedia_dev",
+        hostname: "localhost",
+        username: "postgres",
+        password: "hipm3fvn"
+
 # ## SSL Support
 #
 # In order to use HTTPS in development, a self-signed

@@ -14,6 +14,9 @@ config :igniteopedia_live, IgniteopediaLiveWeb.Endpoint,
   pubsub_server: IgniteopediaLive.PubSub,
   live_view: [signing_salt: "CBxDydFi"]
 
+config :repo_manager,
+        ecto_repos: [RepoManager.Runtime.Repo]
+
 # Configure esbuild (the version is required)
 config :esbuild,
   version: "0.14.0",

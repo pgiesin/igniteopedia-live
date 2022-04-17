@@ -35,11 +35,11 @@ if config_env() == :prod do
       For example: ecto://USER:PASS@HOST/DATABASE
       """
 
-#  config :repo_manager, RepoManager.Runtime.Repo,
-#    # IMPORTANT: Or it won't find the DB server
-#    socket_options: [:inet6],
-#    url: database_url,
-#    pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10")
+  config :repo_manager, RepoManager.Runtime.Repo,
+    # IMPORTANT: Or it won't find the DB server
+    socket_options: [:inet6],
+    url: database_url,
+    pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10")
 
   #host = System.get_env("PHX_HOST") || "example.com"
   port = String.to_integer(System.get_env("PORT") || "4000")

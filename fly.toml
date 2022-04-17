@@ -7,7 +7,8 @@ kill_timeout = 5
 processes = []
 
 [deploy]
-#  release_command = "eval IgniteopediaLive.Release.migrate"
+  release_command = "eval IgniteopediaLive.Release.migrate"
+  #release_command = "eval RepoManager.Runtime.Release.migrate"
 
 [env]
 #  PHX_HOST = "igniteopedia-live-view.fly.dev"
@@ -39,7 +40,7 @@ processes = []
     port = 443
 
   [[services.tcp_checks]]
-    grace_period = "30s"
+    grace_period = "60s"
     interval = "15s"
     restart_limit = 0
     timeout = "2s"

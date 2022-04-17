@@ -20,7 +20,7 @@ defmodule IgniteopediaLive.MixProject do
   def application do
     [
       mod: {IgniteopediaLive.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :account_manager]
     ]
   end
 
@@ -48,7 +48,7 @@ defmodule IgniteopediaLive.MixProject do
       {:ecto_sql, "~> 3.7"},
       {:postgrex, "~> 0.16.2"},
 
-      #{:repo_manager, git: "https://github.com/pgiesin/igniteopedia-core.git", sparse: "repo_manager", branch: "main"},
+      {:account_manager, git: "https://github.com/pgiesin/igniteopedia-core.git", sparse: "account_manager", branch: "main"},
     ]
   end
 
@@ -61,7 +61,10 @@ defmodule IgniteopediaLive.MixProject do
   defp aliases do
     [
       setup: ["deps.get"],
-      "assets.deploy": ["tailwind default --minify", "esbuild default --minify", "phx.digest"]
+      "assets.deploy": ["tailwind default --minify", "esbuild default --minify", "phx.digest"],
+      "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
+      "ecto.reset": ["ecto.drop", "ecto.setup"],
+      test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
     ]
   end
 end
