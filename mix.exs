@@ -33,7 +33,9 @@ defmodule IgniteopediaLive.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:bcrypt_elixir, "~> 2.0"},
       {:phoenix, "~> 1.6.6"},
+      {:phoenix_ecto, "~> 4.4"},
       {:phoenix_html, "~> 3.0"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:phoenix_live_view, "~> 0.17.5"},
@@ -47,6 +49,7 @@ defmodule IgniteopediaLive.MixProject do
       {:tailwind, "~> 0.1", runtime: Mix.env() == :dev},
       {:ecto_sql, "~> 3.7"},
       {:postgrex, "~> 0.16.2"},
+#      {:swoosh, "~> 1.3"},
 
       {:account_manager, git: "https://github.com/pgiesin/igniteopedia-core.git", sparse: "account_manager", branch: "main"},
     ]
