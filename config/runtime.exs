@@ -56,6 +56,13 @@ if config_env() == :prod do
     ],
     secret_key_base: secret_key_base
 
+  config :swoosh, :api_client, Swoosh.ApiClient.Hackney
+
+  config :notify_manager, NotifyManager.Impl.Mailer,
+         adapter: Swoosh.Adapters.Mailgun,
+         api_key: System.get_env("MAILGUN_API_KEY"),
+         domain: System.get_env("MAILGUN_DOMAIN")
+
   # ## Using releases
   #
   # If you are doing OTP releases, you need to instruct Phoenix

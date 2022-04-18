@@ -49,7 +49,6 @@ defmodule IgniteopediaLive.MixProject do
       {:tailwind, "~> 0.1", runtime: Mix.env() == :dev},
       {:ecto_sql, "~> 3.7"},
       {:postgrex, "~> 0.16.2"},
-#      {:swoosh, "~> 1.3"},
 
       {:account_manager, git: "https://github.com/pgiesin/igniteopedia-core.git", sparse: "account_manager", branch: "main"},
     ]

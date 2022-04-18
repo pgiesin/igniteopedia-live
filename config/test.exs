@@ -11,7 +11,7 @@ config :igniteopedia_live, IgniteopediaLiveWeb.Endpoint,
   server: false
 
 # In test we don't send emails.
-config :hello, Hello.Mailer, adapter: Swoosh.Adapters.Test
+config :notify_manager, NotifyManager.Impl.Mailer, adapter: Swoosh.Adapters.Test
 
 # Print only warnings and errors during test
 config :logger, level: :warn

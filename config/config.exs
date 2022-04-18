@@ -17,6 +17,8 @@ config :igniteopedia_live, IgniteopediaLiveWeb.Endpoint,
 config :repo_manager,
         ecto_repos: [RepoManager.Runtime.Repo]
 
+config :swoosh, :api_client, false
+
 # Configure esbuild (the version is required)
 config :esbuild,
   version: "0.14.0",

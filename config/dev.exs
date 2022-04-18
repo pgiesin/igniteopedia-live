@@ -26,6 +26,13 @@ config :repo_manager, RepoManager.Runtime.Repo,
         username: "postgres",
         password: "hipm3fvn"
 
+config :swoosh, :api_client, Swoosh.ApiClient.Hackney
+
+config :notify_manager, NotifyManager.Impl.Mailer,
+         adapter: Swoosh.Adapters.Mailgun,
+         api_key: System.get_env("MAILGUN_API_KEY"),
+         domain: System.get_env("MAILGUN_DOMAIN")
+
 # ## SSL Support
 #
 # In order to use HTTPS in development, a self-signed
