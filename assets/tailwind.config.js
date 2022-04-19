@@ -1,9 +1,9 @@
 module.exports = {
-  mode: "jit",
   content: [
     './js/**/*.js',
-    '../lib/*_web.ex',
-    '../lib/*_web/**/*.*ex',
+    "../lib/**/*.html.eex",
+    "../lib/**/*.html.leex",
+    "../lib/**/*.html.heex",
   ],
   theme: {
     extend: {},

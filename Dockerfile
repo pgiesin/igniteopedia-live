@@ -32,10 +32,10 @@ COPY priv priv
 COPY assets assets
 
 # Compile assets
+COPY lib lib
 RUN mix assets.deploy
 
 # compile project
-COPY lib lib
 RUN mix compile
 
 # copy runtime configuration file
