@@ -4,7 +4,7 @@ ARG MIX_ENV="prod"
 FROM hexpm/elixir:1.12.3-erlang-24.1.2-alpine-3.14.2 AS build
 
 # install build dependencies
-RUN apk add --no-cache build-base git python3 curl
+RUN apk add --no-cache build-base git python3 curl npm
 
 # sets work dir
 WORKDIR /app
@@ -30,9 +30,13 @@ RUN mix deps.compile
 # copy assets
 COPY priv priv
 COPY assets assets
+COPY lib lib
+
+RUN cd assets
+RUN npm install alpinejs
+RUN cd ..
 
 # Compile assets
-COPY lib lib
 RUN mix assets.deploy
 
 # compile project
